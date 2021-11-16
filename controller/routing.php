@@ -21,6 +21,14 @@ switch($var_getMenu){
     case "login":
         require_once('./views/login.php');
     break;
+    case "401":
+        require_once('./views/error401.php');
+    break; 
+    case "logout":
+        $session_destroy = session_destroy();
+        header("location: ./index.php?menu=home");
+        break;    
+   
 default:
         require_once('./views/home.php');
 }
