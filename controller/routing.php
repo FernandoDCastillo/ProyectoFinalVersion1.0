@@ -10,7 +10,9 @@ switch($var_getMenu){
         require_once('./views/reviews.php');
     break;
     case "recomendaciones":
-        require_once('./views/recomendaciones.php');
+        include_once './model/alumnos.php';
+        $sqlPublicaciones = alumnos::verPublicaciones();
+        include_once('./views/recomendaciones.php');
     break;
     case "sugerencias":
         require_once('./views/sugerencias.php');

@@ -55,9 +55,6 @@ if (isset($_SESSION['loggedUserName'])) {
               <li class="nav-item">
                 <a class="nav-link" href="?menu=login">Iniciar sesion</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="?menu=registro">Registrarse</a>
-              </li>
             </ul>
       </div>
     </div>

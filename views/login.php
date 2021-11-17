@@ -6,6 +6,7 @@ session_start();
 }
 if (isset($_SESSION['loggedUserName'])) {
     header("location: ?menu=401");
+	exit();
 ?>
 <?php
 }else {?>
