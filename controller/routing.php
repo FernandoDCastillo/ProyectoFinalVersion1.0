@@ -9,11 +9,13 @@ switch($var_getMenu){
     case "reviews":
         require_once('./views/reviews.php');
     break;
-    case "recomendaciones":
-        require_once('./views/recomendaciones.php');
+    case "misComentarios":
+        include_once './model/conexion.php';
+        $sqlPublicaciones = conexion::verPublicaciones();
+        include_once('./views/misComentarios.php');
     break;
-    case "sugerencias":
-        require_once('./views/sugerencias.php');
+    case "comentarios":
+        require_once('./views/comentarios.php');
     break;
     case "acercaDe":
         require_once('./views/acercaDe.php');
@@ -21,6 +23,9 @@ switch($var_getMenu){
     case "login":
         require_once('./views/login.php');
     break;
+    case "bienvenido":
+        require_once('./views/bienvenido.php');
+    break; 
     case "401":
         require_once('./views/error401.php');
     break; 

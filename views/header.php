@@ -19,10 +19,10 @@ if (isset($_SESSION['loggedUserName'])) {
                 <a class="nav-link" href="?menu=reviews">Reviews</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="?menu=recomendaciones">Mis Recomendaciones</a>
+                <a class="nav-link" href="?menu=misComentarios">Mis comentarios</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="?menu=sugerencias">Sugerencias</a>
+                <a class="nav-link" href="?menu=comentarios">Comentarios</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="?menu=acercaDe">Acerca de</a>
@@ -54,9 +54,6 @@ if (isset($_SESSION['loggedUserName'])) {
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="?menu=login">Iniciar sesion</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="?menu=registro">Registrarse</a>
               </li>
             </ul>
       </div>
