@@ -37,8 +37,9 @@
         
 
         public static function verPublicaciones(){
+            $correo = $_SESSION['loggedUserName'];
             $mysqli = conectadb::dbmysql();
-            $consulta = "select * from publicaciones";
+            $consulta = "SELECT * from publicaciones where correo = '$correo'";
             echo ('<br>');
         // echo ($consulta);
         $resultado = mysqli_query($mysqli, $consulta);

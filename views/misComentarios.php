@@ -16,13 +16,16 @@ session_start();
 if (isset($_SESSION['loggedUserName'])) {
 ?>
                 <?php 
+                    $contador=1;
                     foreach($sqlPublicaciones as $verPublicacion){ ?>
                 <tr>
-                    <td><?php echo $verPublicacion->id_publicacion?></td>
+                    <td><?php echo $contador?></td>
                     <td><?php echo $verPublicacion->titulo?></td>
                     <td><?php echo $verPublicacion->contenido?></td>
                 </tr>
-                <?php }?>
+                <?php 
+                    $contador += 1;
+            }?>
             
         </tbody>
     </table>

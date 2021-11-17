@@ -8,8 +8,17 @@ html,body{
   border: 3px solid #000;
 }
 
+.contenido{
+  background-color:lightblue;
+  border: 3px solid #000;
+  color: #fff;
+}
+
 .titulo{
-  background-color: beige;
+  display: table;
+  background-color:crimson;
+  color:white;
+  text-align: justify;
 }
 
 .home{
@@ -51,6 +60,7 @@ footer {
 .infoAcercaDe{
   background-color: orange;
   text-align: justify;
+  color:white;
   border: 3px solid #000;
 }
 

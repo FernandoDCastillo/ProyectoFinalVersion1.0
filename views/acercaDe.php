@@ -1,5 +1,7 @@
 <div class="row">
-    <h1>Acerca de</h1>
+    <h1>
+        <span  class="titulo">Acerca de</span>
+    </h1>
     
 
     <h2 class="tituloAcercaDe">Información personal</h2>
