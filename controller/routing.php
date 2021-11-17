@@ -25,7 +25,10 @@ switch($var_getMenu){
     break;
     case "bienvenido":
         require_once('./views/bienvenido.php');
-    break; 
+    break;
+    case "sov":
+        require_once('./views/reviews/sov.php');
+    break;  
     case "401":
         require_once('./views/error401.php');
     break; 
