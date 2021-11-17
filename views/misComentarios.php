@@ -1,10 +1,10 @@
 <div class="row">
-    <h1>Publicaciones</h1>
+    <h1 class="titulo">Tus comentarios</h1>
     <table class="table table-dark table-striped">
         <tr>
-            <th>Numero publicacion</th>
-            <th>Titulo</th>
-            <th>Contenido</th>
+            <th width="20%">Numero publicacion</th>
+            <th width="30%">Titulo</th>
+            <th width="50%">Contenido</th>
         </tr>
         <tbody>
 <?php
@@ -31,6 +31,9 @@ if (isset($_SESSION['loggedUserName'])) {
 <?php 
 
 
+}else{?>
+
+<?php 
+    header("location: ?menu=401");
+	exit();
 }?>
-
-

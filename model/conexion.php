@@ -1,28 +1,74 @@
 <?php
-  $db_host = 'localhost';
-  $db_user = 'root';
-  $db_password = '';
-  $db_db = 'proyectoweb';
- 
-  $mysqli = @new mysqli(
-    $db_host,
-    $db_user,
-    $db_password,
-    $db_db
-  );
+    include 'conectaDB.php';
+    class conexion{
 
-  if ($mysqli->connect_error) {
-    echo 'Errno: '.$mysqli->connect_errno;
-    echo '<br>';
-    echo 'Error: '.$mysqli->connect_error;
-    exit();
-  }
+        public $id_publicacion;
+        public $titulo;
+        public $contenido;
 
-  echo 'Success: A proper connection to MySQL was made.';
-  echo '<br>';
-  echo 'Host information: '.$mysqli->host_info;
-  echo '<br>';
-  echo 'Protocol version: '.$mysqli->protocol_version;
+        public function __construct($id_publicacion, $titulo, $contenido) {  
+            $this->id_publicacion = $id_publicacion;
+            $this->titulo = $titulo;
+            $this->contenido = $contenido;
+        }  
 
-  //$mysqli->close();
+    public static function login($_email, $_pass) {
+            $mysqli = conectadb::dbmysql();
+            $stmt = $mysqli->prepare('SELECT email, pass FROM usuarios WHERE email = ? and pass = ?');
+            $stmt->bind_param('ss', $_email, $_pass);
+            $stmt->execute();
+            $resultado = $stmt->get_result();
+            while ($filasql = mysqli_fetch_array($resultado)) {
+            // Imprimir por Arreglo Asociado
+            echo $filasql['email'] . ' ';
+            echo $filasql['pass'] . ' ';
+            // initialize session variables
+            session_start();
+            // $_SESSION['loggedDataTime'] = datatime();
+            $_SESSION['loggedUserName'] = $filasql['email'] ;
+            }
+            $acceso = false;
+            if ($stmt->affected_rows == 1) {
+            $acceso = true;
+            }
+            $mysqli->close();
+            return $acceso;
+            }
+        
+
+        public static function verPublicaciones(){
+            $mysqli = conectadb::dbmysql();
+            $consulta = "select * from publicaciones";
+            echo ('<br>');
+        // echo ($consulta);
+        $resultado = mysqli_query($mysqli, $consulta);
+        if (!$resultado) {
+            echo 'No pudo Realizar la consulta a la base de datos';
+            exit;
+        }
+        $listaPublicaciones = [];
+        while ($publicaciones = mysqli_fetch_array($resultado)) {
+            $listaPublicaciones[] = new conexion($publicaciones['id_publicacion'], $publicaciones['titulo'],$publicaciones['contenido']);
+        }
+        $mysqli->close();
+        return $listaPublicaciones;
+        } 
+
+
+        public static function insertarPublicacion($_titulo,$_contenido,$_email){
+            $mysqli = conectadb::dbmysql();
+            $stmt = $mysqli->prepare('INSERT into publicaciones(id_publicacion,titulo,contenido, correo) VALUE (NULL, ?,?,?)');
+            $stmt->bind_param('sss', $_titulo,$_contenido,$_email);
+            $stmt->execute();
+            $resultado = $stmt->get_result();
+            $acceso = false;
+            if ($stmt->affected_rows == 1) {
+                $acceso = true;
+            }
+            $mysqli->close();
+            return $acceso;
+        
+        }    
+
+    }
 ?>
